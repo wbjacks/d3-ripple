@@ -12,5 +12,11 @@ container.selectAll('circle').data(CIRCLES.sort(d3.descending)).enter()
     .attr('cx', WIDTH/2)
     .attr('cy', HEIGHT/2)
     .attr('stroke', 'black')
-    .attr('fill', 'white');
+    .attr('fill', 'white')
+    .on('click', effect);
 
+function effect() {
+    d3.select(this).transition()
+        .duration(500)
+        .attr('r', 0);
+}
