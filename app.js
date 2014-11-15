@@ -13,10 +13,15 @@ container.selectAll('circle').data(CIRCLES.sort(d3.descending)).enter()
     .attr('cy', HEIGHT/2)
     .attr('stroke', 'black')
     .attr('fill', 'white')
-    .on('click', effect);
+    .on('click', function(d,i) {
+        var init = d;
+        d3.select(this).transition()
+            .duration(500)
+            .attr('r', i-1)
+        .transition()
+            .delay(500)
+            .duration(1000)
+            .attr('r', init);
 
-function effect() {
-    d3.select(this).transition()
-        .duration(500)
-        .attr('r', 0);
-}
+    });
+
